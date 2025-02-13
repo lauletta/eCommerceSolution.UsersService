@@ -12,7 +12,7 @@ namespace eCommerce.Core.Validators;
         RuleFor(temp => temp.Password)
             .NotEmpty().WithMessage("Password is required");
         RuleFor(temp => temp.UserName)
-            .NotEmpty().WithMessage("Username is required")
+            .NotEmpty().WithMessage("Username can't be blank")
             .Length(1, 50).WithMessage("Username should be 1 to 50 characters long");
         RuleFor(temp => temp.Gender)
             .IsInEnum().WithMessage("Invalid gender option");
