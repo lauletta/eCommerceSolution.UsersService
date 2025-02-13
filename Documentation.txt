@@ -1,0 +1,3 @@
+Automapper: https://docs.automapper.org/en/stable/
+Records: https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record
+DTO: https://learn.microsoft.com/en-us/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5
