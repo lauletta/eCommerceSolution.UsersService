@@ -15,7 +15,6 @@ public class DapperDbContext
         _configuration = configuration;
         string? connectionString = _configuration.GetConnectionString("PostgresConnection");
 
-        //Create a new NpgsqlConnection with the retrivied connection string
         _connection = new NpgsqlConnection(connectionString);
     }
 

@@ -7,13 +7,10 @@ using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//Add infrastructure services
 builder.Services.AddInfrastructure();
 
-//Add core services
 builder.Services.AddCore();
 
-//Add controllers to the service collectioin
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
@@ -21,26 +18,34 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 
 builder.Services.AddAutoMapper(typeof(ApplicationUserMappingProfile).Assembly);
 
-//FluentValidatioins
 builder.Services.AddFluentValidationAutoValidation();
 
-//Build the web application
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSwaggerGen();
+builder.Services.AddCors(opt =>
+{
+    opt.AddDefaultPolicy(builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 app.UseExceptionHandlingMiddleware();
 
-//Routing
 app.UseRouting();
+app.UseSwagger(); 
+app.UseSwaggerUI(); 
+app.UseCors();
 
-//Authentication
 app.UseAuthentication();
 
-//Authorization
 app.UseAuthorization();
 
-//Controllers routes
 app.MapControllers();
-
-app.MapGet("/", () => "Hello World!");
 
 app.Run();

@@ -15,11 +15,9 @@ namespace eCommerce.API.Controllers
             _usersService = usersService;
         }
 
-        //Endpoint for user registration
-        [HttpPost("register")] // api/auth/register
+        [HttpPost("register")] 
         public async Task<IActionResult> Register(RegisterRequest registerRequest)
         {
-            //check for invalid registerRequest
             if (registerRequest == null)
             {
                 return BadRequest("Invalid registration data");
@@ -37,7 +35,6 @@ namespace eCommerce.API.Controllers
         }
 
 
-        //Endpoint for users login
         [HttpPost("login")]
         public async Task<IActionResult> Login (LoginRequest loginRequest)
         {

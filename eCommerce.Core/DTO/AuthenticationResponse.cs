@@ -10,7 +10,6 @@ public record AuthenticationResponse (
     bool Success
     )
 {
-    //Parametless constructor
     public AuthenticationResponse() : this(default, default, default, default, default, default)
     {
 
